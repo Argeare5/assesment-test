@@ -5,9 +5,12 @@ import { FiArrowRight, FiUser, FiClock } from 'react-icons/fi';
 import { FaWallet, FaStore, FaMoneyBillWave, FaExchangeAlt, FaChartLine, FaLock, FaUserCog, FaCoins } from 'react-icons/fa';
 import { SiEthereum } from 'react-icons/si';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import {TransactionsBlockWrapper} from '../components/TransactionsBlockWrapper';
+import {useNovaConnect} from '@tuwaio/nova-connect/hooks';
 
 function Home() {
   const [openSections, setOpenSections] = useState({});
+  const { setIsConnectModalOpen } = useNovaConnect();
 
   const featuredProperties = [
     {
@@ -425,7 +428,10 @@ function Home() {
               >
                 Browse Properties
               </Link>
+
               <button
+                type="button"
+                onClick={() => setIsConnectModalOpen(true)}
                 className="btn bg-gradient-to-r from-primary-700 to-primary-800 hover:from-primary-800 hover:to-primary-900"
               >
                 <FaWallet className="mr-2" />
@@ -620,6 +626,7 @@ function Home() {
           </div>
         </div>
       </section>
+      <TransactionsBlockWrapper />
     </div>
   );
 }

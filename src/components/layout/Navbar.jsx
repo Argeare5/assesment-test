@@ -1,9 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { usePulsarStore } from '../../hooks/pulsarStoreHook';
+import { ConnectButton } from '@tuwaio/nova-connect/components';
+import { useState } from 'react';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const transactionPool = usePulsarStore((state) => state.transactionsPool);
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -39,11 +42,7 @@ function Navbar() {
                 <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-primary-500 to-primary-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </Link>
             ))}
-            <button
-              className="btn"
-            >
-              Connect
-            </button>
+            <ConnectButton transactionPool={transactionPool} />
           </div>
 
           {/* Mobile menu button */}
@@ -72,12 +71,7 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="block mx-2 mt-2 px-3 py-2 text-base font-medium btn w-auto"
-                onClick={() => setIsOpen(false)}
-              >
-                Connect
-              </button>
+              <ConnectButton transactionPool={transactionPool} />
             </div>
           </div>
         )}

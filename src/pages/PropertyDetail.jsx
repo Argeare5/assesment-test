@@ -3,9 +3,12 @@ import { motion } from 'framer-motion';
 import { FiHome, FiMaximize2, FiCalendar, FiTrendingUp, FiUsers, FiDollarSign, FiGrid } from 'react-icons/fi';
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
 import { FaFacebook, FaTwitter, FaLinkedin, FaEthereum, FaWallet } from 'react-icons/fa';
+import {ConnectButton} from '@tuwaio/nova-connect/components';
+import {useNovaConnect} from '@tuwaio/nova-connect/hooks';
 
 function PropertyDetail() {
   const { id } = useParams();
+  const { setIsConnectModalOpen } = useNovaConnect();
 
   const property = {
     id: parseInt(id),
@@ -288,7 +291,7 @@ function PropertyDetail() {
                 View 3D Model
               </Link>
 
-              <button className="btn w-full mb-4 flex items-center justify-center">
+              <button type="button" onClick={() => setIsConnectModalOpen(true)} className="btn w-full mb-4 flex items-center justify-center">
                 <FaWallet className="mr-2" />
                 Connect Wallet to Invest
               </button>

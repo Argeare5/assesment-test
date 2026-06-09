@@ -1,8 +1,8 @@
 import React, { Suspense, useState, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { FiRotateCw, FiZoomIn, FiZoomOut, FiMaximize2 } from 'react-icons/fi';
+import { FiRotateCw, FiMaximize2 } from 'react-icons/fi';
 
 // 3D Model Component
 function House3DModel({ modelPath, scale = 1 }) {
