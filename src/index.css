@@ -6,15 +6,83 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-primary-500: oklch(62.3% 0.214 259.815);
-  --color-primary-600: oklch(54.6% 0.245 262.881);
-  --color-primary-700: oklch(48.8% 0.243 264.376);
-  --color-primary-900: oklch(80.9% 0.105 251.813);
-  --color-platinum-200: #e5e4e2;
-  --color-sapphire-50: oklch(97% 0.014 254.604);
-  --color-sapphire-800: oklch(42.4% 0.199 265.638);
-  --color-sapphire-900: oklch(37.9% 0.146 265.522);
-  --color-secondary-900: oklch(55.1% 0.027 264.364);
+  /* Typography */
+  --font-sans: "Inter", "Montserrat", sans-serif;
+
+  /* Border Radii */
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 3rem;
+
+  /* Blurs (Backdrop & Filter) */
+  --blur-xs: 2px;
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 12px;
+  --blur-xl: 16px;
+  --blur-2xl: 24px;
+  --blur-3xl: 32px;
+
+  /* Shadows */
+  --shadow-luxe: 0 4px 32px 0 rgba(38, 96, 211, 0.12);
+  --shadow-glass: 0 8px 32px 0 rgba(38, 96, 211, 0.15);
+  --shadow-glass-lg: 0 25px 50px -12px rgba(38, 96, 211, 0.25);
+  --shadow-glass-xl: 0 35px 60px -12px rgba(38, 96, 211, 0.35);
+
+  /* Glass Colors (Backgrounds & Borders) */
+  --color-glass: rgba(255, 255, 255, 0.25);
+  --color-glass-dark: rgba(255, 255, 255, 0.1);
+  --color-glass-light: rgba(255, 255, 255, 0.4);
+  --color-border-glass: rgba(255, 255, 255, 0.18);
+  --color-border-glass-dark: rgba(255, 255, 255, 0.1);
+
+  /* Primary Palette */
+  --color-primary-50: oklch(98.2% 0.011 254.6);
+  --color-primary-100: oklch(94.9% 0.024 254.8);
+  --color-primary-200: oklch(87.1% 0.066 256.2);
+  --color-primary-300: oklch(79.3% 0.076 252.6);
+  --color-primary-400: oklch(58.3% 0.158 256.4);
+  --color-primary-500: oklch(46.3% 0.221 261.2);
+  --color-primary-600: oklch(36.1% 0.171 264.4);
+  --color-primary-700: oklch(28.8% 0.132 265.8);
+  --color-primary-800: oklch(19.3% 0.088 266.3);
+  --color-primary-900: oklch(14.2% 0.061 265.5);
+
+  /* Sapphire Palette */
+  --color-sapphire-50: oklch(98.2% 0.011 254.6);
+  --color-sapphire-100: oklch(94.9% 0.024 254.8);
+  --color-sapphire-200: oklch(87.1% 0.066 256.2);
+  --color-sapphire-300: oklch(79.3% 0.076 252.6);
+  --color-sapphire-400: oklch(58.3% 0.158 256.4);
+  --color-sapphire-500: oklch(46.3% 0.221 261.2);
+  --color-sapphire-600: oklch(36.1% 0.171 264.4);
+  --color-sapphire-700: oklch(28.8% 0.132 265.8);
+  --color-sapphire-800: oklch(19.3% 0.088 266.3);
+  --color-sapphire-900: oklch(14.2% 0.061 265.5);
+
+  /* Secondary Palette */
+  --color-secondary-50: oklch(96.7% 0.007 251.2);
+  --color-secondary-100: oklch(94.4% 0.010 250.4);
+  --color-secondary-200: oklch(90.1% 0.011 251.3);
+  --color-secondary-300: oklch(84.1% 0.011 251.9);
+  --color-secondary-400: oklch(73.7% 0.015 251.6);
+  --color-secondary-500: oklch(55.6% 0.019 251.2);
+  --color-secondary-600: oklch(44.3% 0.021 251.5);
+  --color-secondary-700: oklch(35.5% 0.020 252.1);
+  --color-secondary-800: oklch(29.1% 0.016 251.5);
+  --color-secondary-900: oklch(18.2% 0.022 258.4);
+
+  /* Platinum Palette */
+  --color-platinum-50: oklch(96.7% 0.007 251.2);
+  --color-platinum-100: oklch(94.4% 0.010 250.4);
+  --color-platinum-200: oklch(90.1% 0.011 251.3);
+  --color-platinum-300: oklch(84.1% 0.011 251.9);
+  --color-platinum-400: oklch(73.7% 0.015 251.6);
+  --color-platinum-500: oklch(55.6% 0.019 251.2);
+  --color-platinum-600: oklch(44.3% 0.021 251.5);
+  --color-platinum-700: oklch(35.5% 0.020 252.1);
+  --color-platinum-800: oklch(29.1% 0.016 251.5);
+  --color-platinum-900: oklch(18.2% 0.022 258.4);
 }
 
 @layer base {
@@ -23,8 +91,8 @@
   }
 
   body {
-    @apply font-sans text-sapphire-800 bg-gradient-to-br from-sapphire-50 via-white to-platinum-200;
-    min-height: 100dvh;
+    @apply font-sans text-sapphire-800 bg-gradient-to-br from-sapphire-50 via-white to-platinum-50;
+    min-height: 100vh;
   }
 }
 
@@ -34,23 +102,23 @@
   }
 
   .btn {
-    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-md text-white bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-300;
+    @apply inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-xl shadow-luxe text-white bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center px-4 py-2 border border-white text-sm font-medium rounded-xl text-primary-700 bg-white backdrop-blur-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-300;
+    @apply inline-flex items-center px-4 py-2 border border-glass text-sm font-medium rounded-xl text-primary-700 bg-glass backdrop-blur-md hover:bg-glass-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-300;
   }
 
   .input {
-    @apply block w-full rounded-xl border-platinum-200 bg-white/80 backdrop-blur-md shadow-md focus:border-primary-500 focus:ring-primary-500 sm:text-sm transition-all duration-300;
+    @apply block w-full rounded-xl border-platinum-200 bg-white/80 backdrop-blur-md shadow-luxe focus:border-primary-500 focus:ring-primary-500 sm:text-sm transition-all duration-300;
   }
 
   .card {
-    @apply bg-white/80 backdrop-blur-md rounded-2xl shadow-md border border-platinum-200/50 overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+    @apply bg-white/80 backdrop-blur-md rounded-2xl shadow-luxe border border-platinum-200/50 overflow-hidden transition-all duration-300 hover:shadow-glass-lg hover:scale-[1.02];
   }
 
   .glass-card {
-    @apply bg-white/90 backdrop-blur-md rounded-2xl shadow-md border border-platinum-200/50;
+    @apply bg-white/90 backdrop-blur-md rounded-2xl shadow-luxe border border-platinum-200/50;
   }
 
   .glass-nav {
@@ -58,7 +126,7 @@
   }
 
   .glass-section {
-    @apply bg-gradient-to-br from-white/5 to-white/15 backdrop-blur-md rounded-3xl shadow-lg border border-platinum-200/50;
+    @apply bg-gradient-to-br from-white/5 to-white/15 backdrop-blur-md rounded-3xl shadow-glass-lg border border-platinum-200/50;
   }
 
   .glass-hero {
